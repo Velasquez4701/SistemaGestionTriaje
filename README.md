@@ -87,12 +87,4 @@ Siga estos pasos para ejecutar el proyecto en su máquina local:
 
 * **Trello:** Planificación de actividades (Sprints, Hitos 1 y 2) y asignación de tareas.
 * **Git / GitHub:** Control de versiones, trabajo colaborativo y gestión de código.
-* **Figma:** Diseño y prototipado del organigrama y los mockups de la interfaz.
-
-## 👥 Autores (Grupo 5)
-
-* **[Nombre Alumno 1]** - Líder de Gestión y Documentación (`main.py`, Informe)
-* **[Nombre Alumno 2]** - Líder de Arquitectura y Modelo (`modelo.py` OOP, UML)
-* **[Nombre Alumno 3]** - Líder de Datos y Pruebas (`GestorDatos`, `test_modelo.py`)
-* **[Nombre Alumno 4]** - Líder de Interfaz y Flujo (`vista.py`, Mockups Figma)
-* 
+* **Figma:** Diseño y prototipado del organigrama.
