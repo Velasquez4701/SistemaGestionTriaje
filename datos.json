@@ -148,20 +148,5 @@
         "clasificacion_imc": "Normal",
         "nivel_atencion": "Urgente",
         "fecha_registro": "26-11-2025 14:45"
-    },
-    {
-        "nombre": "Ricardo Mendoza",
-        "edad": 35,
-        "sexo": "Masculino",
-        "peso": 85.0,
-        "talla": 175.0,
-        "presion": 120.0,
-        "frecuencia": 105,
-        "saturacion": 88,
-        "conciencia": "Alerta",
-        "imc": 27.76,
-        "clasificacion_imc": "Sobrepeso",
-        "nivel_atencion": "Urgente",
-        "fecha_registro": "26-11-2025 22:17"
     }
 ]
