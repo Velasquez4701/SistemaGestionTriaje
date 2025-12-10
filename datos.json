@@ -1,152 +1,164 @@
 [
-    {
-        "nombre": "JUAN PEREZ",
-        "edad": 45,
-        "sexo": "Masculino",
+  {
+    "dni": "12354278",
+    "nombre": "Juan Perez",
+    "edad": 45,
+    "sexo": "Masculino",
+    "fecha_registro": "26-11-2025 08:30",
+    "atenciones": [
+      {
         "peso": 85.0,
         "talla": 175.0,
         "presion": 130.0,
         "frecuencia": 80,
-        "saturacion": 98,
         "conciencia": "Alerta",
+        "saturacion": 98,
         "imc": 27.76,
         "clasificacion_imc": "Sobrepeso",
         "nivel_atencion": "Normal",
         "fecha_registro": "26-11-2025 08:30"
-    },
-    {
-        "nombre": "MARIA LOPEZ",
-        "edad": 82,
-        "sexo": "Femenino",
+      }
+    ]
+  },
+  {
+    "dni": "80545678",
+    "nombre": "Maria Lopez",
+    "edad": 82,
+    "sexo": "Femenino",
+    "fecha_registro": "26-11-2025 09:15",
+    "atenciones": [
+      {
         "peso": 55.0,
         "talla": 160.0,
         "presion": 170.0,
         "frecuencia": 95,
-        "saturacion": 91,
         "conciencia": "Alerta",
+        "saturacion": 91,
         "imc": 21.48,
         "clasificacion_imc": "Normal",
         "nivel_atencion": "Urgente",
         "fecha_registro": "26-11-2025 09:15"
-    },
-    {
-        "nombre": "CARLOS RUIZ",
-        "edad": 30,
-        "sexo": "Masculino",
+      },
+      {
+        "peso": 52.0,
+        "talla": 150.0,
+        "presion": 150.0,
+        "frecuencia": 90,
+        "conciencia": "Dolor",
+        "saturacion": 95,
+        "imc": 23.11,
+        "clasificacion_imc": "Normal",
+        "nivel_atencion": "Urgente",
+        "fecha_registro": "09-12-2025 16:03"
+      }
+    ]
+  },
+  {
+    "dni": "12345314",
+    "nombre": "Carlos Ruiz",
+    "edad": 30,
+    "sexo": "Masculino",
+    "fecha_registro": "26-11-2025 10:00",
+    "atenciones": [
+      {
         "peso": 110.0,
         "talla": 180.0,
         "presion": 140.0,
         "frecuencia": 100,
-        "saturacion": 99,
         "conciencia": "Alerta",
+        "saturacion": 99,
         "imc": 33.95,
         "clasificacion_imc": "Obesidad",
         "nivel_atencion": "Normal",
         "fecha_registro": "26-11-2025 10:00"
-    },
-    {
-        "nombre": "ANA GOMEZ",
-        "edad": 25,
-        "sexo": "Femenino",
+      }
+    ]
+  },
+  {
+    "dni": "47015678",
+    "nombre": "Ana Gomez",
+    "edad": 25,
+    "sexo": "Femenino",
+    "fecha_registro": "26-11-2025 10:45",
+    "atenciones": [
+      {
         "peso": 45.0,
         "talla": 165.0,
         "presion": 90.0,
         "frecuencia": 70,
-        "saturacion": 98,
         "conciencia": "Alerta",
+        "saturacion": 98,
         "imc": 16.53,
         "clasificacion_imc": "Bajo peso",
         "nivel_atencion": "Normal",
         "fecha_registro": "26-11-2025 10:45"
-    },
-    {
-        "nombre": "LUIS TORRES",
-        "edad": 78,
-        "sexo": "Masculino",
-        "peso": 70.0,
-        "talla": 170.0,
-        "presion": 95.0,
-        "frecuencia": 50,
-        "saturacion": 93,
-        "conciencia": "Verbal",
-        "imc": 24.22,
-        "clasificacion_imc": "Normal",
+      }
+    ]
+  },
+  {
+    "dni": "21013817",
+    "nombre": "Miguel Lopez",
+    "edad": 47,
+    "sexo": "Masculino",
+    "fecha_registro": "09-12-2025 10:21",
+    "atenciones": [
+      {
+        "peso": 85.0,
+        "talla": 177.0,
+        "presion": 89.0,
+        "frecuencia": 140,
+        "conciencia": "Dolor",
+        "saturacion": 95,
+        "imc": 27.14,
+        "clasificacion_imc": "Sobrepeso",
         "nivel_atencion": "Urgente",
-        "fecha_registro": "26-11-2025 11:20"
-    },
-    {
-        "nombre": "ELENA DIAZ",
-        "edad": 60,
-        "sexo": "Femenino",
-        "peso": 68.0,
-        "talla": 155.0,
-        "presion": 120.0,
-        "frecuencia": 75,
-        "saturacion": 97,
-        "conciencia": "Alerta",
-        "imc": 28.3,
+        "fecha_registro": "09-12-2025 10:21"
+      },
+      {
+        "peso": 80.0,
+        "talla": 177.0,
+        "presion": 87.0,
+        "frecuencia": 95,
+        "conciencia": "Dolor",
+        "saturacion": 30,
+        "imc": 25.54,
         "clasificacion_imc": "Sobrepeso",
         "nivel_atencion": "Normal",
-        "fecha_registro": "26-11-2025 12:00"
-    },
-    {
-        "nombre": "PEDRO SOTO",
-        "edad": 19,
-        "sexo": "Masculino",
+        "fecha_registro": "09-12-2025 10:27"
+      }
+    ]
+  },
+  {
+    "dni": "47018752",
+    "nombre": "Carlos Vargas",
+    "edad": 33,
+    "sexo": "Masculino",
+    "fecha_registro": "09-12-2025 16:05",
+    "atenciones": [
+      {
+        "peso": 72.0,
+        "talla": 167.0,
+        "presion": 70.0,
+        "frecuencia": 80,
+        "conciencia": "Alerta",
+        "saturacion": 91,
+        "imc": 25.84,
+        "clasificacion_imc": "Sobrepeso",
+        "nivel_atencion": "Urgente",
+        "fecha_registro": "09-12-2025 16:05"
+      },
+      {
         "peso": 75.0,
-        "talla": 178.0,
-        "presion": 110.0,
-        "frecuencia": 65,
-        "saturacion": 99,
-        "conciencia": "Alerta",
-        "imc": 23.67,
-        "clasificacion_imc": "Normal",
-        "nivel_atencion": "Normal",
-        "fecha_registro": "26-11-2025 12:30"
-    },
-    {
-        "nombre": "ROSA VILLA",
-        "edad": 90,
-        "sexo": "Femenino",
-        "peso": 50.0,
-        "talla": 150.0,
-        "presion": 185.0,
-        "frecuencia": 115,
-        "saturacion": 88,
-        "conciencia": "Inconsciente",
-        "imc": 22.22,
-        "clasificacion_imc": "Normal",
-        "nivel_atencion": "Urgente",
-        "fecha_registro": "26-11-2025 13:10"
-    },
-    {
-        "nombre": "MIGUEL ANGEL",
-        "edad": 50,
-        "sexo": "Masculino",
-        "peso": 95.0,
-        "talla": 172.0,
-        "presion": 150.0,
+        "talla": 167.0,
+        "presion": 75.0,
         "frecuencia": 85,
-        "saturacion": 96,
         "conciencia": "Alerta",
-        "imc": 32.11,
-        "clasificacion_imc": "Obesidad",
-        "nivel_atencion": "Normal",
-        "fecha_registro": "26-11-2025 14:00"
-    },
-    {
-        "nombre": "SOFIA LUNA",
-        "edad": 35,
-        "sexo": "Femenino",
-        "peso": 60.0,
-        "talla": 162.0,
-        "presion": 85.0,
-        "frecuencia": 125,
         "saturacion": 90,
-        "conciencia": "Dolor",
-        "imc": 22.86,
-        "clasificacion_imc": "Normal",
+        "imc": 26.89,
+        "clasificacion_imc": "Sobrepeso",
         "nivel_atencion": "Urgente",
-        "fecha_registro": "26-11-2025 14:45"
-    }
+        "fecha_registro": "09-12-2025 23:38"
+      }
+    ]
+  }
 ]
