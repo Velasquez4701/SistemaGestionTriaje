@@ -1,6 +1,7 @@
 import os
 from tabulate import tabulate
 import config 
+from modelo import ValidadorDni, DniInvalidoException
 
 
 class Vista:
@@ -16,15 +17,17 @@ class Vista:
     def mostrar_menu_principal(self):
         print("\nMenú Principal:")
         print("1. 📝 Registrar Nuevo Paciente")
-        print("2. 🔍 Buscar Paciente por Nombre")
-        print("3. 📋 Listar Pacientes (Todos)")
-        print("4. 🚨 Listar Pacientes (Solo Urgentes)")
-        print("5. 📊 Ver Estadísticas")
-        print("6. 💾 Salir y Guardar")
+        print("2. 🔍 Buscar Paciente por DNI")
+        print("3. 🔍 Buscar Paciente por Nombre")
+        print("4. 📋 Listar Pacientes (Todos)")
+        print("5. 🚨 Listar Pacientes (Solo Urgentes)")
+        print("6. 📊 Ver Estadísticas")
+        print("7. 📋 Ver Historial de Paciente")
+        print("8. 💾 Salir y Guardar")
         print("-" * 30)
 
     def solicitar_opcion(self):
-        return input("Seleccione una opción (1-6): ").strip()
+        return input("Seleccione una opción (1-8): ").strip()
     
 
     def __leer_texto(self, mensaje):
@@ -76,7 +79,7 @@ class Vista:
             print(f"❌ Error: Opción inválida. Ingrese una de estas: {opciones_validas}")
 
     
-    def solicitar_datos_paciente(self):
+    def solicitar_datos_personales(self):
 
         print("\n--- 📝 Registro de Nuevo Paciente ---")
         nombre = self.__leer_texto("Nombre y Apellido: ")
@@ -85,10 +88,18 @@ class Vista:
         sexo = "Masculino" if sexo_input == "M" else "Femenino"
         
         edad = self.__leer_entero("Edad (años): ", min_val=0, max_val=120)
-        peso = self.__leer_flotante("Peso (kg): ", min_val=0)
-        talla = self.__leer_flotante("Talla (cm): ", min_val=0)
+        
+        return {
+            "nombre": nombre, 
+            "edad": edad, 
+            "sexo": sexo,
+        }
+
+    def solicitar_datos_triaje(self):
 
         print("\n--- Signos Vitales ---")
+        peso = self.__leer_flotante("Peso (kg): ", min_val=0)
+        talla = self.__leer_flotante("Talla (cm): ", min_val=0)
         presion = self.__leer_flotante("Presión Sistólica (mmHg): ", min_val=0)
         frecuencia = self.__leer_entero("Frecuencia Cardiaca (lpm): ", min_val=0, max_val=300)
         saturacion = self.__leer_entero("Saturación de Oxígeno (%): ", min_val=0, max_val=100)
@@ -98,10 +109,12 @@ class Vista:
         conciencia = mapa_conciencia[conciencia_op]
 
         return {
-            "nombre": nombre, "edad": edad, "sexo": sexo,
-            "peso": peso, "talla": talla, "presion": presion,
-            "frecuencia": frecuencia, "saturacion": saturacion,
-            "conciencia": conciencia
+            "peso": peso, 
+            "talla": talla, 
+            "presion": presion,
+            "frecuencia": frecuencia, 
+            "conciencia": conciencia,
+            "saturacion": saturacion,
         }
 
 
@@ -117,18 +130,29 @@ class Vista:
         datos_tabla = []
 
         for p in lista_pacientes:
-            datos_tabla.append([
-                p.nombre,
-                f"{p.edad} años",
-                p.sexo,
-                p.peso,
-                p.talla,
-                p.imc,
-                p.clasificacion_imc,
-                p.presion,
-                f"{p.saturacion}%",
-                p.nivel_atencion.upper()
-            ])
+            at = p.obtener_ultima_atencion()
+            if at is None:
+                datos_tabla.append([
+                    p.dni,
+                    p.nombre,
+                    f"{p.edad} años",
+                    p.sexo,
+                    "-", "-", "-", "-", "-", "-", "SIN ATENCIÓN"
+                ])
+            else:
+                datos_tabla.append([
+                    p.dni,
+                    p.nombre,
+                    f"{p.edad} años",
+                    p.sexo,
+                    at.peso,
+                    at.talla,
+                    at.imc,
+                    at.clasificacion_imc,
+                    at.presion,
+                    f"{at.saturacion}%",
+                    at.nivel_atencion.upper()
+                ])
 
         print(tabulate(datos_tabla, headers=config.ENCABEZADOS_TABLA, tablefmt="fancy_grid"))
         self.pausar()
@@ -138,21 +162,24 @@ class Vista:
 
         if not paciente:
             self.mostrar_mensaje("Paciente no encontrado.")
+            self.pausar()
             return
+
+        p_ultima_atencion = paciente.obtener_ultima_atencion()
         
         print("\n" + "="*40)
         print(f"📄 FICHA DEL PACIENTE: {paciente.nombre.upper()}")
         print("="*40)
         print(f"📅 Registrado: {paciente.fecha_registro}")
         print(f"👤 Edad: {paciente.edad} años | Sexo: {paciente.sexo}")
-        print(f"⚖️  Peso: {paciente.peso} kg | Talla: {paciente.talla} cm")
+        print(f"⚖️  Peso: {p_ultima_atencion.peso} kg | Talla: {p_ultima_atencion.talla} cm")
         print("-" * 40)
-        print(f"💓 Presión: {paciente.presion} | Frecuencia: {paciente.frecuencia}")
-        print(f"🫁 Saturación: {paciente.saturacion}% | Conciencia: {paciente.conciencia}")
+        print(f"💓 Presión: {p_ultima_atencion.presion} | Frecuencia: {p_ultima_atencion.frecuencia}")
+        print(f"🫁 Saturación: {p_ultima_atencion.saturacion}% | Conciencia: {p_ultima_atencion.conciencia}")
         print("-" * 40)
-        print(f"📊 IMC: {paciente.imc} ({paciente.clasificacion_imc})")
+        print(f"📊 IMC: {p_ultima_atencion.imc} ({p_ultima_atencion.clasificacion_imc})")
 
-        estado = paciente.nivel_atencion.upper()
+        estado = p_ultima_atencion.nivel_atencion.upper()
         icono = "🚨" if estado == "URGENTE" else "✅"
         print(f"{icono} NIVEL DE ATENCIÓN: {estado}")
         print("="*40)
@@ -171,6 +198,67 @@ class Vista:
             print(f"  - {k}: {v}")
         print("=" * 40)
         self.pausar()
+
+    def solicitar_dni(self, mensaje = "Ingrese número de DNI: "):
+        # return self.__leer_texto("Ingrese número de DNI: ")
+        while True:
+            dni = input(mensaje).strip()
+            try:
+                dni_validado = ValidadorDni.validar(dni)
+                return dni_validado
+            except DniInvalidoException as e:
+                print(f"❌ {e}")   # muestra el error
+
+    def mostrar_historial_paciente(self, paciente):
+
+        if not paciente:
+            self.mostrar_mensaje("Paciente no encontrado.", "error")
+            self.pausar()
+            return
+
+        if not paciente.lista_atencion_triage:
+            self.mostrar_mensaje("Este paciente no tiene atenciones registradas.", "info")
+            self.pausar()
+            return
+
+        print("\n" + "="*50)
+        print(f"📄 HISTORIAL DEL PACIENTE: {paciente.nombre.upper()}")
+        print(f"DNI: {paciente.dni} | Edad: {paciente.edad} años | Sexo: {paciente.sexo}")
+        print("="*50)
+
+        filas = []
+        for i, a in enumerate(paciente.lista_atencion_triage, start=1):
+            filas.append([
+                i,
+                a.fecha_registro,
+                a.peso,
+                a.talla,
+                a.imc,
+                a.clasificacion_imc,
+                a.presion,
+                a.frecuencia,
+                a.saturacion,
+                a.conciencia,
+                a.nivel_atencion
+            ])
+
+        encabezados = [
+            "N°",
+            "Fecha",
+            "Peso",
+            "Talla",
+            "IMC",
+            "Clasif. IMC",
+            "Presión",
+            "Frecuencia",
+            "Saturación",
+            "Conciencia",
+            "Atención"
+        ]
+
+        print(tabulate(filas, headers=encabezados, tablefmt="fancy_grid"))
+        self.pausar()
+
 
     def mostrar_mensaje(self, mensaje, tipo="info"):
 
